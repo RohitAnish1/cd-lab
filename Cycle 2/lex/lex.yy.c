@@ -351,8 +351,8 @@ static void yynoreturn yy_fatal_error ( const char* msg  );
 	(yy_hold_char) = *yy_cp; \
 	*yy_cp = '\0'; \
 	(yy_c_buf_p) = yy_cp;
-#define YY_NUM_RULES 4
-#define YY_END_OF_BUFFER 5
+#define YY_NUM_RULES 3
+#define YY_END_OF_BUFFER 4
 /* This struct is not used in this scanner,
    but its presence is necessary. */
 struct yy_trans_info
@@ -360,11 +360,9 @@ struct yy_trans_info
 	flex_int32_t yy_verify;
 	flex_int32_t yy_nxt;
 	};
-static const flex_int16_t yy_accept[22] =
+static const flex_int16_t yy_accept[8] =
     {   0,
-        3,    3,    5,    3,    4,    3,    3,    3,    3,    3,
-        3,    3,    3,    2,    1,    2,    2,    2,    2,    2,
-        0
+        1,    1,    4,    1,    2,    1,    0
     } ;
 
 static const YY_CHAR yy_ec[256] =
@@ -375,13 +373,13 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    1,    1,    1,    3,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
-        1,    4,    1,    1,    1,    5,    1,    1,    1,    1,
-        1,    1,    1,    1,    1,    1,    3,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
 
-        6,    1,    1,    1,    7,    1,    1,    1,    1,    1,
-        1,    1,    1,    4,    1,    8,    1,    5,    1,    9,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
+        1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
         1,    1,    1,    1,    1,    1,    1,    1,    1,    1,
@@ -399,41 +397,29 @@ static const YY_CHAR yy_ec[256] =
         1,    1,    1,    1,    1
     } ;
 
-static const YY_CHAR yy_meta[10] =
+static const YY_CHAR yy_meta[3] =
     {   0,
-        1,    2,    1,    1,    1,    1,    1,    1,    1
+        1,    2
     } ;
 
-static const flex_int16_t yy_base[25] =
+static const flex_int16_t yy_base[9] =
     {   0,
-        0,    5,   24,   20,   35,    9,   11,   19,    0,   16,
-       18,   13,   22,   14,   12,   12,   28,    7,    4,    1,
-       35,   32,    3,    0
+        0,    0,    4,    0,    5,    0,    5,    2
     } ;
 
-static const flex_int16_t yy_def[25] =
+static const flex_int16_t yy_def[9] =
     {   0,
-       22,   22,   21,   23,   21,   23,   23,   23,    6,   23,
-       23,    6,    6,   24,    6,   24,   24,   24,   17,   17,
-        0,   21,   21,   21
+        7,    1,    7,    8,    7,    8,    0,    7
     } ;
 
-static const flex_int16_t yy_nxt[45] =
+static const flex_int16_t yy_nxt[8] =
     {   0,
-       16,    5,    6,    8,   16,    7,    5,    6,   20,   19,
-        7,    9,   10,    9,   17,    8,   17,   14,   12,   11,
-        9,    9,    9,   21,   13,    8,   21,   21,   21,   15,
-       17,   18,    4,    4,    3,   21,   21,   21,   21,   21,
-       21,   21,   21,   21
+        4,    5,    6,    7,    3,    7,    7
     } ;
 
-static const flex_int16_t yy_chk[45] =
+static const flex_int16_t yy_chk[8] =
     {   0,
-       24,    1,    1,   23,   20,    1,    2,    2,   19,   18,
-        2,    6,    6,    7,   16,   15,   14,   12,   10,    7,
-       11,    8,    4,    3,   11,   13,    0,    0,    0,   13,
-       17,   17,   22,   22,   21,   21,   21,   21,   21,   21,
-       21,   21,   21,   21
+        1,    1,    8,    3,    7,    7,    7
     } ;
 
 static yy_state_type yy_last_accepting_state;
@@ -452,9 +438,12 @@ int yy_flex_debug = 0;
 char *yytext;
 #line 1 "fourchar.l"
 #line 2 "fourchar.l"
-    #include <stdio.h>
-#line 457 "lex.yy.c"
-#line 458 "lex.yy.c"
+#include <stdio.h>
+#include <string.h>
+
+char forbidden_substring[5]; // To store the first 4 characters of name + null terminator
+#line 446 "lex.yy.c"
+#line 447 "lex.yy.c"
 
 #define INITIAL 0
 
@@ -671,9 +660,9 @@ YY_DECL
 		}
 
 	{
-#line 5 "fourchar.l"
+#line 8 "fourchar.l"
 
-#line 677 "lex.yy.c"
+#line 666 "lex.yy.c"
 
 	while ( /*CONSTCOND*/1 )		/* loops until end-of-file is reached */
 		{
@@ -700,13 +689,13 @@ yy_match:
 			while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 				{
 				yy_current_state = (int) yy_def[yy_current_state];
-				if ( yy_current_state >= 22 )
+				if ( yy_current_state >= 8 )
 					yy_c = yy_meta[yy_c];
 				}
 			yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
 			++yy_cp;
 			}
-		while ( yy_base[yy_current_state] != 35 );
+		while ( yy_base[yy_current_state] != 5 );
 
 yy_find_action:
 		yy_act = yy_accept[yy_current_state];
@@ -732,25 +721,27 @@ do_action:	/* This label is used only to access EOF actions. */
 
 case 1:
 YY_RULE_SETUP
-#line 6 "fourchar.l"
-{ printf("Exiting the program.\n"); exit(0); }
+#line 9 "fourchar.l"
+{
+             if (strstr(yytext, forbidden_substring)) {
+                 printf("Invalid Variable: '%s' contains forbidden substring '%s'\n", yytext, forbidden_substring);
+             } else {
+                 printf("Accepted: %s\n", yytext);
+             }
+         }
 	YY_BREAK
 case 2:
+/* rule 2 can match eol */
 YY_RULE_SETUP
-#line 7 "fourchar.l"
-{ printf("Rejected: %s\n", yytext); }
+#line 16 "fourchar.l"
+; // Ignore newlines
 	YY_BREAK
 case 3:
 YY_RULE_SETUP
-#line 8 "fourchar.l"
-{ printf("Accepted: %s\n", yytext); }
-	YY_BREAK
-case 4:
-YY_RULE_SETUP
-#line 9 "fourchar.l"
+#line 17 "fourchar.l"
 ECHO;
 	YY_BREAK
-#line 754 "lex.yy.c"
+#line 745 "lex.yy.c"
 case YY_STATE_EOF(INITIAL):
 	yyterminate();
 
@@ -1047,7 +1038,7 @@ static int yy_get_next_buffer (void)
 		while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 			{
 			yy_current_state = (int) yy_def[yy_current_state];
-			if ( yy_current_state >= 22 )
+			if ( yy_current_state >= 8 )
 				yy_c = yy_meta[yy_c];
 			}
 		yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
@@ -1075,11 +1066,11 @@ static int yy_get_next_buffer (void)
 	while ( yy_chk[yy_base[yy_current_state] + yy_c] != yy_current_state )
 		{
 		yy_current_state = (int) yy_def[yy_current_state];
-		if ( yy_current_state >= 22 )
+		if ( yy_current_state >= 8 )
 			yy_c = yy_meta[yy_c];
 		}
 	yy_current_state = yy_nxt[yy_base[yy_current_state] + yy_c];
-	yy_is_jam = (yy_current_state == 21);
+	yy_is_jam = (yy_current_state == 7);
 
 		return yy_is_jam ? 0 : yy_current_state;
 }
@@ -1755,9 +1746,33 @@ void yyfree (void * ptr )
 
 #define YYTABLES_NAME "yytables"
 
-#line 9 "fourchar.l"
+#line 17 "fourchar.l"
 
 
 int main() {
+    char name[100];
+
+    // Step 2: Prompt user
+    printf("Enter your name: ");
+
+    // Step 3: Read name
+    fgets(name, sizeof(name), stdin);
+
+    // Remove newline if present
+    name[strcspn(name, "\n")] = '\0';
+
+    // Step 4: Extract first 4 characters
+    strncpy(forbidden_substring, name, 4);
+    forbidden_substring[4] = '\0'; // Null-terminate manually
+
+    printf("Now enter strings (Ctrl+D to stop):\n");
+
+    // Step 6: Start scanning inputs
     yylex();
+    return 0;
 }
+
+int yywrap() {
+    return 1;
+}
+
