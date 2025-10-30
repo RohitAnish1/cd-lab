@@ -1,5 +1,0 @@
-Enter total number of states: 3
-Epsilon closure of all states:
-q0: {q0, q1, q2, }
-q1: {q1, q2, }
-q2: {q2, }
